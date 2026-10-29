@@ -1,0 +1,672 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DEQUSS · decime que se siente</title>
+<meta name="description" content="Agencia de contenido. Editamos reels y anuncios que frenan el scroll y encuentran el lado humano de lo profesional.">
+<meta property="og:title" content="DEQUSS · decime que se siente">
+<meta property="og:description" content="Contenido con estructura que conecta con la persona que está detrás.">
+<meta property="og:image" content="/assets/manos-ojo.jpg">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;700&family=Inter+Tight:wght@300;400;600&display=swap">
+<script>try{if(localStorage.getItem('dequss-theme')==='oscuro')document.documentElement.classList.add('dark')}catch(e){}</script>
+<style>
+:root{--bg:#ffffff;--fg:#111111;--fg2:#2b2b2b;--mut:#5c5c5c;--line:#e3e3e3;--card:#f7f7f7;--panel:rgba(255,255,255,0.75);--scrim:rgba(255,255,255,0.9);--tsh:0 2px 30px #ffffff;--imgf:invert(1);--blend:multiply;--lid:#3a3a3a;--hatch:#eeeeee;--lidedge:#ffffff;--track:rgba(0,0,0,0.1);
+--c:#E5232D;--c2:#671016;--ct:#000000;--ca:#C8102E;--s1:#C8102E;--s2:#167F38;--s3:#8A2BD6}
+html.dark{--bg:#000000;--fg:#ffffff;--fg2:#e5e5e5;--mut:#a3a3a3;--line:#2e2e2e;--card:#0b0b0b;--panel:rgba(0,0,0,0.6);--scrim:rgba(0,0,0,0.88);--tsh:0 2px 30px #000000;--imgf:none;--blend:normal;--lid:#cfcfcf;--hatch:#111111;--lidedge:#0a0a0a;--track:rgba(255,255,255,0.12)}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:'Inter Tight',Inter,ui-sans-serif,system-ui,sans-serif;transition:background-color .45s,color .45s;overflow-x:clip}
+a{color:var(--mut);text-decoration:none}a:hover{color:var(--fg)}
+.disp{font-family:'Unbounded','Inter Tight',sans-serif}
+.acc{color:var(--ca);transition:color .45s ease}
+.wrap{max-width:1360px;margin:0 auto;padding-left:clamp(16px,4vw,48px);padding-right:clamp(16px,4vw,48px)}
+.lbl{margin:0;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.08em}
+.h2{margin:0;font-family:'Unbounded','Inter Tight',sans-serif;font-size:clamp(36px,5vw,72px);font-weight:500;line-height:1.04;letter-spacing:-.045em;text-shadow:var(--tsh)}
+.lead{margin:0;font-size:18px;font-weight:300;line-height:1.5;color:var(--fg2)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:999px;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;cursor:pointer;font-family:inherit;transition:transform .35s cubic-bezier(.2,1.6,.3,1),box-shadow .35s}
+.btn:hover{transform:translateY(-3px) scale(1.04);box-shadow:0 0 0 4px var(--bg),0 0 0 6px var(--fg)}
+a.fill,.fill{background:var(--c);color:var(--ct);padding:16px 24px;border:0}
+a.fill:hover{color:var(--ct)}
+a.ghost{border:1px solid var(--fg);color:var(--fg);padding:15px 22px}
+.pe-none{pointer-events:none}.pe-none a,.pe-none button{pointer-events:auto}
+.sect{position:relative;z-index:2}
+
+/* escenario */
+.stage{position:sticky;top:0;height:100vh;margin-bottom:-100vh;z-index:0;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.zoom{position:relative;height:100vh;aspect-ratio:736/1308;flex:0 0 auto;will-change:transform;transform-origin:50.14% 48.74%}
+.zoom img{position:absolute;inset:0;width:100%;height:100%;display:block;filter:var(--imgf);mix-blend-mode:var(--blend)}
+.fade{position:absolute;pointer-events:none}
+.fl{left:-1px;top:0;bottom:0;width:24%;background:linear-gradient(90deg,var(--bg) 0%,var(--bg) 12%,rgba(0,0,0,0) 100%)}
+.fr{right:-1px;top:0;bottom:0;width:24%;background:linear-gradient(270deg,var(--bg) 0%,var(--bg) 12%,rgba(0,0,0,0) 100%)}
+.fb{left:0;right:0;bottom:-1px;height:22%;background:linear-gradient(0deg,var(--bg) 0%,var(--bg) 15%,rgba(0,0,0,0) 100%)}
+.ft{left:0;right:0;top:-1px;height:8%;background:linear-gradient(180deg,var(--bg) 0%,rgba(0,0,0,0) 100%)}
+.eyebtn{position:absolute;left:27.85%;top:42.43%;width:46.88%;height:12%;margin:0;padding:0;border:0;background:transparent;cursor:pointer}
+.eyebtn:focus-visible{outline:2px solid var(--fg);outline-offset:6px;border-radius:50%}
+.almond{position:absolute;inset:0}
+.irisw{position:absolute;left:33.77%;top:22.3%;width:27.54%;height:60.5%;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.iris{position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle,#000 0 29%,var(--c) 32%,var(--c2) 70%,#050505 77%);box-shadow:0 0 26px var(--c)}
+.fibers{position:absolute;inset:0;border-radius:50%;background:repeating-conic-gradient(rgba(0,0,0,.5) 0deg 2.5deg,rgba(255,255,255,.16) 2.5deg 3.5deg,rgba(0,0,0,0) 3.5deg 8deg);animation:spin 38s linear infinite}
+.pp{position:absolute;left:33%;top:33%;width:34%;height:34%;border-radius:50%;background:#000;box-shadow:0 0 0 2px var(--c);transition:transform .5s cubic-bezier(.2,1.5,.3,1)}
+.pp::after{content:"";position:absolute;left:14%;top:12%;width:28%;height:28%;border-radius:50%;background:#fff}
+.eyebtn:hover .pp{transform:scale(1.3)}
+.lid{position:absolute;left:0;right:0;transform:scaleY(0);background-color:var(--lid)}
+.lidU{top:0;height:61%;transform-origin:50% 0;background-image:repeating-linear-gradient(172deg,var(--hatch) 0 1px,rgba(0,0,0,0) 1px 3.5px);border-bottom:3px solid var(--lidedge)}
+.lidD{bottom:0;height:40%;transform-origin:50% 100%;background-image:repeating-linear-gradient(8deg,var(--hatch) 0 1px,rgba(0,0,0,0) 1px 3.5px);border-top:3px solid var(--lidedge)}
+.blinking .lidU,.blinking .lidD{animation:lid .42s cubic-bezier(.6,0,.4,1)}
+.dots{position:absolute;right:clamp(16px,2.5vw,36px);top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:14px}
+.dots span{width:12px;height:12px;border-radius:50%;opacity:.35;transition:transform .4s cubic-bezier(.2,1.6,.3,1),opacity .3s}
+.dots span.on{opacity:1;transform:scale(1.7)}
+.track{position:absolute;left:0;bottom:0;height:3px;width:100%;background:var(--track)}
+.track div{height:100%;width:0;background:var(--c)}
+
+/* header */
+header{position:relative;z-index:5;padding-top:22px;padding-bottom:22px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px}
+.brand{display:flex;align-items:center;gap:12px;color:var(--fg)}
+.brand:hover{color:var(--fg)}
+.lockup{display:inline-grid;gap:3px;line-height:1}
+.lockup .l1{font-family:'Unbounded','Inter Tight',sans-serif;font-size:22px;font-weight:700;letter-spacing:.02em}
+.lockup .l2{width:0;min-width:100%;font-size:8.6px;font-weight:600;text-align:justify;text-align-last:justify;white-space:nowrap;opacity:.85}
+.logo-eye path{fill:none;stroke:var(--fg);stroke-width:1.8}.logo-eye .i{fill:var(--c);transition:fill .45s}
+.right{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.navlinks{display:flex;flex-wrap:wrap;align-items:center;gap:clamp(16px,2.6vw,34px);font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.navlinks a.fill{padding:13px 20px}
+.round{display:flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;border:1.5px solid var(--fg);background:transparent;color:var(--fg);cursor:pointer;padding:0}
+.tgl{transition:transform .45s cubic-bezier(.2,1.6,.3,1)}.tgl:hover{transform:rotate(-25deg) scale(1.08)}
+.tgl .sun{display:none}html.dark .tgl .sun{display:block}html.dark .tgl .moon{display:none}
+.burger{display:none;flex-direction:column;gap:6px}
+.burger span{display:block;width:20px;height:2px;background:var(--fg);border-radius:2px;transition:width .3s}
+.burger:hover span:last-child{width:12px}
+.round:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
+@media (max-width:760px){.navlinks{display:none}.burger{display:flex}.dots{display:none}}
+
+/* menu movil */
+.mmenu{position:fixed;inset:0;z-index:70;background:var(--bg);color:var(--fg);display:flex;flex-direction:column;gap:24px;padding:22px 20px 32px;overflow-y:auto;animation:mfade .35s ease both}
+.mmenu[hidden]{display:none}
+.mlink{display:flex;align-items:baseline;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);animation:min .7s cubic-bezier(.2,1.2,.3,1) both;transition:transform .35s cubic-bezier(.2,1.6,.3,1)}
+a.mlink,a.mlink:hover{color:var(--fg)}
+.mlink:hover{transform:translateX(12px)}
+.mlink .n{font-size:13px;font-weight:600;color:var(--ca)}
+.mlink .t{font-family:'Unbounded','Inter Tight',sans-serif;font-size:clamp(34px,10vw,52px);font-weight:500;letter-spacing:-.05em;line-height:1.05}
+.mclose{width:48px;height:48px;border-radius:50%;border:0;background:var(--c);color:var(--ct);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;transition:transform .4s cubic-bezier(.2,1.6,.3,1)}
+.mclose:hover{transform:rotate(90deg)}
+
+/* hero */
+.hero{min-height:calc(100vh - 92px);padding-top:24px;padding-bottom:70px;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:36px}
+.hero h1{margin:0;font-family:'Unbounded','Inter Tight',sans-serif;font-size:clamp(40px,4.6vw,70px);font-weight:500;line-height:1.03;letter-spacing:-.05em;text-shadow:var(--tsh)}
+.rollbox{display:inline-block;height:1.1em;overflow:hidden;vertical-align:bottom}
+.roll{display:inline-flex;flex-direction:column;animation:roll 10s cubic-bezier(.7,-0.3,.25,1.3) infinite}
+.roll span{height:1.1em}
+.dot8{width:8px;height:8px;border-radius:50%;background:var(--c);display:inline-block}
+.ping{position:relative;width:10px;height:10px;display:inline-block}
+.ping i,.ping b{position:absolute;inset:0;border-radius:50%;background:var(--c)}
+.ping i{animation:ping 1.6s ease-out infinite}
+
+/* +50 */
+.stat{margin-top:6vh;padding-top:24px;padding-bottom:24px;display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px}
+.stat .num{font-family:'Unbounded','Inter Tight',sans-serif;font-size:clamp(56px,6vw,92px);font-weight:500;letter-spacing:-.05em;line-height:1}
+.stat p{margin:0;max-width:420px;font-size:clamp(18px,1.6vw,22px);font-weight:300;line-height:1.35;color:var(--fg2);text-shadow:var(--tsh)}
+.stat strong{font-weight:600;color:var(--fg)}
+
+/* comparador */
+.cmp-sec{padding-top:clamp(48px,6vw,88px);padding-bottom:clamp(32px,4vw,56px);display:flex;flex-direction:column;gap:28px}
+.row-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px}
+.cmp{position:relative;width:min(420px,100%);aspect-ratio:9/16;border-radius:28px;overflow:hidden;background:#0a0a0a;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+.cmp video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.cmp .layer{position:absolute;inset:0;clip-path:inset(0 0 0 50%)}
+.cmp .badge{position:absolute;top:14px;padding:6px 12px;border-radius:999px;font-size:11px;font-weight:600;letter-spacing:.1em;pointer-events:none}
+.cmp .handle{position:absolute;top:0;bottom:0;left:50%;width:3px;margin-left:-1.5px;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.2);pointer-events:none}
+.cmp .knob{position:absolute;left:50%;top:50%;width:60px;height:60px;margin:-30px 0 0 -30px;border-radius:50%;background:#fff;box-shadow:0 4px 20px rgba(0,0,0,.25);display:flex;align-items:center;justify-content:center}
+.cmp input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize}
+.ctrls{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px}
+.ctrl{height:48px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--fg);padding:0 20px}
+.ctrl.sq{width:48px;padding:0}
+.ctrl [hidden]{display:none}
+
+/* servicios */
+.svc-sec{padding-top:clamp(32px,4vw,56px);padding-bottom:clamp(32px,4vw,56px)}
+.svcs{display:flex;flex-direction:column;border-bottom:1px solid var(--line);background:var(--panel)}
+.svc{position:relative;display:flex;flex-wrap:wrap;align-items:center;gap:8px 32px;padding:22px 20px;border-top:1px solid var(--line);overflow:hidden;transition:color .35s}
+a.svc{color:var(--fg)}
+.svc::before{content:"";position:absolute;inset:0;background:var(--fg);transform:scaleX(0);transform-origin:left;transition:transform .55s cubic-bezier(.7,0,.2,1);z-index:0}
+.svc>*{position:relative;z-index:1}
+a.svc:hover{color:var(--bg)}.svc:hover::before{transform:scaleX(1)}
+.svc .n{width:56px;font-size:13px;font-weight:600}
+.svc .t{flex:1 1 420px;font-family:'Unbounded','Inter Tight',sans-serif;font-size:clamp(30px,4.4vw,62px);font-weight:500;letter-spacing:-.045em;line-height:1.05;transition:transform .5s cubic-bezier(.2,1.2,.3,1)}
+.svc:hover .t{transform:translateX(24px)}
+.svc .d{flex:0 1 340px;font-size:16px;line-height:1.45}
+
+/* tarjetas */
+.card{border:1px solid var(--line);border-radius:24px;padding:28px;display:flex;flex-direction:column;gap:14px;background:var(--card);transition:transform .45s cubic-bezier(.2,1.4,.3,1),border-color .3s}
+.card:hover{transform:translateY(-10px) rotate(-1.5deg);border-color:var(--fg)}
+.card.feat{border:2px solid var(--c)}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px}
+.tag{align-self:flex-start;padding:6px 12px;border-radius:999px;border:1px solid var(--line);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
+.tag.on{background:var(--c);color:var(--ct);border-color:transparent}
+.ptitle{font-family:'Unbounded','Inter Tight',sans-serif;font-size:24px;font-weight:500;letter-spacing:-.03em;line-height:1.15}
+.was{font-size:16px;color:var(--mut);text-decoration:line-through}
+.price{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 8px;color:var(--ca);transition:color .45s}
+.price .cur{font-size:18px;font-weight:600}
+.price .amt{font-family:'Unbounded','Inter Tight',sans-serif;font-size:clamp(56px,5.6vw,80px);font-weight:500;letter-spacing:-.05em;line-height:.95}
+.price .u{font-size:15px;color:var(--mut)}
+.save{align-self:flex-start;padding:6px 12px;border-radius:10px;border:1px solid var(--ca);color:var(--ca);font-size:13px;font-weight:600}
+.per{font-size:14px;font-weight:600;color:var(--fg2)}
+.inc{margin:4px 0 0;padding:14px 0 0;list-style:none;display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--line)}
+.inc.cols{border:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px 18px}
+.inc li{display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.4;color:var(--fg2)}
+.ck{width:16px;height:16px;flex:0 0 auto;margin-top:2px;fill:none;stroke:var(--ca);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.card .btn{margin-top:auto}
+.big{font-family:'Unbounded','Inter Tight',sans-serif;font-size:clamp(28px,3vw,40px);font-weight:500;letter-spacing:-.04em;line-height:1.1}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chips span{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;border:1px solid var(--line);font-size:14px;font-weight:600}
+.chips svg{width:18px;height:18px;fill:none;stroke:var(--ca);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+
+/* manifiesto */
+.mani{padding-top:clamp(56px,7vw,110px);padding-bottom:clamp(56px,7vw,110px)}
+.mani .big1{margin:0;font-family:'Unbounded','Inter Tight',sans-serif;font-size:clamp(48px,9vw,140px);font-weight:500;line-height:1;letter-spacing:-.055em;text-shadow:var(--tsh)}
+.w{display:inline-block;transition:transform .35s cubic-bezier(.2,1.6,.3,1);cursor:default}
+.w:hover{transform:translateY(-12px) rotate(-4deg)}
+
+/* proceso */
+.step .num{font-family:'Unbounded','Inter Tight',sans-serif;font-size:44px;font-weight:700;letter-spacing:-.05em}
+.step svg path{fill:none;stroke-width:2}
+
+/* resenas */
+.rev-wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px;align-items:start}
+.rev-list{display:flex;flex-direction:column;gap:18px}
+.rev-card .q{margin:0;font-size:18px;font-weight:300;line-height:1.55;color:var(--fg2)}
+.rev-card .who{display:flex;align-items:center;gap:12px}
+.rev-card .av{width:40px;height:40px;border-radius:50%;background:var(--c);color:var(--ct);display:flex;align-items:center;justify-content:center;font-weight:600;font-size:14px;flex:0 0 auto}
+.rev-card .nm{font-weight:600}.rev-card .br{font-size:14px;color:var(--mut)}
+.starrow{display:flex;gap:4px}
+.starrow svg{width:18px;height:18px;fill:var(--ca)}
+.starrow svg.off{fill:var(--line)}
+.fld{display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:600}
+.fld input,.fld textarea{font:inherit;font-size:16px;font-weight:400;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:14px 16px;outline:none;transition:border-color .25s,box-shadow .25s;resize:vertical}
+.fld input:focus,.fld textarea:focus{border-color:var(--fg);box-shadow:0 0 0 3px var(--c)}
+fieldset.sf{border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+fieldset.sf legend{font-size:14px;font-weight:600;padding:0;margin-bottom:8px}
+.stars{display:flex;gap:6px}
+.stars button{width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:var(--bg);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;transition:transform .3s cubic-bezier(.2,1.6,.3,1)}
+.stars button:hover{transform:scale(1.12) rotate(-6deg)}
+.stars button svg{width:22px;height:22px;fill:var(--line);transition:fill .2s}
+.stars button.on svg{fill:var(--ca)}
+.stars button:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
+.err{margin:0;font-size:14px;font-weight:600;color:#C8102E}
+html.dark .err{color:#ff6b6b}
+.note{margin:0;font-size:13px;color:var(--mut)}
+.ok{display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+
+/* contacto */
+.cta{display:flex;flex-direction:column;justify-content:flex-end}
+.cta-in{padding:56px clamp(16px,4vw,48px) 40px;background:linear-gradient(180deg,rgba(0,0,0,0) 0%,var(--scrim) 42%,var(--bg) 100%)}
+.foot{max-width:1360px;margin:48px auto 0;display:flex;flex-wrap:wrap;justify-content:space-between;gap:18px;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut)}
+
+.cursor{position:fixed;left:0;top:0;width:34px;height:34px;margin:-17px 0 0 -17px;border:1.5px solid #fff;border-radius:50%;pointer-events:none;mix-blend-mode:difference;z-index:60;transition:transform .12s linear}
+@media (pointer:coarse){.cursor{display:none}}
+.rv.in{animation:rvin .9s cubic-bezier(.2,.8,.2,1) both}
+
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes lid{0%{transform:scaleY(0)}45%,55%{transform:scaleY(1)}100%{transform:scaleY(0)}}
+@keyframes ping{0%{transform:scale(1);opacity:.9}100%{transform:scale(2.6);opacity:0}}
+@keyframes roll{0%,18%{transform:translateY(0)}25%,43%{transform:translateY(-20%)}50%,68%{transform:translateY(-40%)}75%,93%{transform:translateY(-60%)}100%{transform:translateY(-80%)}}
+@keyframes mfade{from{opacity:0}to{opacity:1}}
+@keyframes min{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+@keyframes rvin{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.fibers,.roll,.ping i,.rv.in{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="cursor" aria-hidden="true"></div>
+
+<!-- MENU MOVIL -->
+<div class="mmenu" id="mmenu" role="dialog" aria-modal="true" aria-label="Menú" hidden>
+<div style="display:flex;align-items:center;justify-content:space-between;gap:16px">
+<span class="brand">
+<svg class="logo-eye" width="38" height="22" viewBox="0 0 38 22" aria-hidden="true"><path d="M2 11 Q19 -6 36 11 Q19 28 2 11 Z"></path><circle class="i" cx="19" cy="11" r="6"></circle><circle cx="19" cy="11" r="2.6" fill="#000"></circle></svg>
+<span class="lockup"><span class="l1">DEQUSS</span><span class="l2">decime que se siente</span></span>
+</span>
+<button class="mclose" type="button" data-close aria-label="Cerrar menú"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 2 L16 16 M16 2 L2 16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"></path></svg></button>
+</div>
+<nav aria-label="Menú móvil" style="display:flex;flex-direction:column;margin-top:4vh">
+<a class="mlink" href="#trabajos" data-close style="animation-delay:.05s"><span class="n">01</span><span class="t">Trabajos</span></a>
+<a class="mlink" href="#antes-despues" data-close style="animation-delay:.12s"><span class="n">02</span><span class="t">Antes / después</span></a>
+<a class="mlink" href="#servicios" data-close style="animation-delay:.19s"><span class="n">03</span><span class="t">Servicios</span></a>
+<a class="mlink" href="#proceso" data-close style="animation-delay:.26s"><span class="n">04</span><span class="t">El funnel</span></a>
+<a class="mlink" href="#precios" data-close style="animation-delay:.3s"><span class="n">05</span><span class="t">Precios</span></a>
+</nav>
+<div class="mlink" style="border:0;margin-top:auto;flex-direction:column;align-items:stretch;gap:18px;animation-delay:.33s">
+<a class="btn fill" data-wa="Quiero más información sobre sus servicios." data-close target="_blank" rel="noopener" style="padding:18px 24px;font-size:14px">Escribinos por WhatsApp →</a>
+</div>
+</div>
+
+<!-- ESCENARIO: la imagen que se acerca al bajar -->
+<div class="stage">
+<div class="zoom" id="zoom">
+<img id="img" src="/assets/manos-ojo.jpg" alt="Grabado de dos manos que rodean un ojo" width="736" height="1308">
+<div class="fade fl"></div><div class="fade fr"></div><div class="fade fb"></div><div class="fade ft"></div>
+<button class="eyebtn" id="eye" type="button" aria-label="Tocá el ojo: pestañea y cambia de chakra">
+<div class="almond" id="almond">
+<div class="irisw" id="iris"><div class="iris"></div><div class="fibers"></div><div class="pp"></div></div>
+<div id="lids" style="position:absolute;inset:0"><div class="lid lidU"></div><div class="lid lidD"></div></div>
+</div>
+</button>
+</div>
+<div class="dots" id="dots" aria-hidden="true"></div>
+<div class="track"><div id="progress"></div></div>
+</div>
+
+<!-- HEADER -->
+<header class="wrap">
+<a class="brand" href="#inicio">
+<svg class="logo-eye" width="38" height="22" viewBox="0 0 38 22" aria-hidden="true"><path d="M2 11 Q19 -6 36 11 Q19 28 2 11 Z"></path><circle class="i" cx="19" cy="11" r="6"></circle><circle cx="19" cy="11" r="2.6" fill="#000"></circle></svg>
+<span class="lockup"><span class="l1">DEQUSS</span><span class="l2">decime que se siente</span></span>
+</a>
+<div class="right">
+<button class="round tgl" id="tgl" type="button" aria-label="Cambiar a modo oscuro">
+<svg class="moon" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M15.5 12.5 A6.5 6.5 0 1 1 7.5 4.5 A5 5 0 0 0 15.5 12.5 Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"></path></svg>
+<svg class="sun" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="3.6" fill="none" stroke="currentColor" stroke-width="1.7"></circle><path d="M10 1.5 V3.5 M10 16.5 V18.5 M1.5 10 H3.5 M16.5 10 H18.5 M4 4 L5.4 5.4 M14.6 14.6 L16 16 M4 16 L5.4 14.6 M14.6 5.4 L16 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"></path></svg>
+</button>
+<button class="round burger" id="burger" type="button" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span></button>
+<nav class="navlinks" aria-label="Principal">
+<a href="#trabajos">Trabajos</a>
+<a href="#antes-despues">Antes / después</a>
+<a href="#servicios">Servicios</a>
+<a href="#precios">Precios</a>
+<a class="btn fill" href="#contacto">Escribinos</a>
+</nav>
+</div>
+</header>
+
+<main>
+<!-- HERO -->
+<section id="inicio" class="sect wrap hero pe-none">
+<div style="flex:0 1 430px;display:flex;flex-direction:column;gap:22px">
+<p class="lbl" style="display:flex;align-items:center;gap:10px"><span class="dot8"></span>Agencia de contenido</p>
+<h1>Te miran.<br>Hacé que <span class="rollbox"><span class="roll acc"><span>sientan.</span><span>conecten.</span><span>vuelvan.</span><span>compren.</span><span>sientan.</span></span></span></h1>
+</div>
+<div style="flex:0 1 340px;display:flex;flex-direction:column;gap:22px">
+<p class="lead" style="text-shadow:var(--tsh)">Encontramos el lado humano de lo profesional: contenido con estructura que conecta con la persona que está detrás. Bajá despacio, el ojo se te va a acercar.</p>
+<div><a class="btn fill" href="#contacto">Quiero que me miren →</a></div>
+<p class="lbl" style="display:flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.1em;color:var(--mut)"><span class="ping"><i></i><b></b></span>Tocá el ojo</p>
+</div>
+</section>
+
+<!-- +50 -->
+<section id="trabajos" class="sect wrap stat">
+<span class="num acc">+<span id="count" data-to="50">50</span></span>
+<p>marcas ya confían en <strong>nuestros servicios de calidad.</strong></p>
+</section>
+
+<!-- ANTES / DESPUES -->
+<section id="antes-despues" class="sect wrap cmp-sec">
+<div class="row-head rv">
+<h2 class="h2" style="max-width:760px">Mismo video.<br>Otra <span class="acc">sensación.</span></h2>
+<p class="lead" style="max-width:480px">Arrastrá la línea y mirá qué pasa cuando un video crudo pasa por nuestras manos.</p>
+</div>
+<div class="rv" style="display:flex;flex-direction:column;align-items:center;gap:22px">
+<div class="cmp">
+<video id="vCrudo" src="/assets/crudo.mp4" poster="/assets/crudo.jpg" muted autoplay loop playsinline preload="auto" aria-label="Video crudo"></video>
+<div class="layer" id="layer"><video id="vEdit" src="/assets/editado.mp4" poster="/assets/editado.jpg" muted autoplay loop playsinline preload="auto" aria-label="Video editado"></video></div>
+<span class="badge" style="left:14px;background:rgba(0,0,0,.6);color:#fff">CRUDO</span>
+<span class="badge" style="right:14px;background:var(--c);color:var(--ct)">EDITADO</span>
+<div class="handle" id="handle"><div class="knob"><svg width="34" height="20" viewBox="0 0 38 22" aria-hidden="true"><path d="M2 11 Q19 -6 36 11 Q19 28 2 11 Z" fill="none" stroke="#000" stroke-width="2.4"></path><circle cx="19" cy="11" r="5" style="fill:var(--c)"></circle></svg></div></div>
+<input type="range" id="split" min="0" max="100" value="50" aria-label="Comparar video crudo y editado">
+</div>
+<div class="ctrls">
+<button class="btn ctrl sq" id="playBtn" type="button" aria-label="Pausar videos">
+<svg class="i-pause" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2 H7 V14 H4 Z M9 2 H12 V14 H9 Z" fill="currentColor"></path></svg>
+<svg class="i-play" hidden width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2 L14 8 L4 14 Z" fill="currentColor"></path></svg>
+</button>
+<button class="btn ctrl" id="sndBtn" type="button">
+<svg class="i-off" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 7 H5 L9 3 V15 L5 11 H2 Z" fill="currentColor"></path><path d="M12 7 L16 11 M16 7 L12 11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path></svg>
+<svg class="i-on" hidden width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 7 H5 L9 3 V15 L5 11 H2 Z" fill="currentColor"></path><path d="M12 6 Q14 9 12 12 M14 4 Q17.5 9 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path></svg>
+<span id="sndLabel">Activar sonido</span>
+</button>
+</div>
+<p style="margin:0;font-size:13px;color:var(--mut);text-align:center">Energía Solar Brandsen · “El amigo electricista”</p>
+</div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios" class="sect wrap svc-sec">
+<p class="lbl rv" style="margin-bottom:18px">Lo que hacemos</p>
+<div class="svcs rv">
+<a class="svc" href="#precios"><span class="n">01</span><span class="t">Edición de contenido</span><span class="d">Reels y anuncios con cortes, subtítulos, música y sonido, buscando en cada video el lado humano de tu marca.</span></a>
+<a class="svc" href="#proceso"><span class="n">02</span><span class="t">Funnel de contenido</span><span class="d">Una estructura de captación, nutrición y conversión para crecer en redes y generar ventas o posibles clientes.</span></a>
+<a class="svc" href="#precios"><span class="n">03</span><span class="t">Contenido con identidad</span><span class="d">Colores, tipografías y estilo propios, para que tu marca se reconozca y se sienta en cada video.</span></a>
+<a class="svc" href="#precios"><span class="n">04</span><span class="t">Filmmaking</span><span class="d">También filmamos: grabamos el contenido de tu marca en 4K, con dron y equipo de audio, para que llegue a edición con la mejor materia prima.</span></a>
+</div>
+</section>
+
+<!-- PRECIOS -->
+<section id="precios" class="sect wrap" style="padding-top:clamp(32px,4vw,56px);padding-bottom:clamp(32px,4vw,56px);display:flex;flex-direction:column;gap:20px">
+<div class="row-head">
+<h2 class="h2">Elegí cómo<br>querés <span class="acc">sentirte.</span></h2>
+<p class="lead" style="max-width:500px">Edición por video o por mes. Y si querés el embudo completo, lo armamos a tu medida.</p>
+</div>
+<div class="grid3">
+<div class="card">
+<span class="tag">Unitario</span>
+<span class="ptitle">Edición de video</span>
+<div class="price"><span class="cur">USD</span><span class="amt">20</span><span class="u">por video</span></div>
+<span class="per">Ideal para probar cómo trabajamos</span>
+<ul class="inc">
+<li><svg class="ck" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5 L6.5 12 L13 4.5"></path></svg>Edición completa: cortes con ritmo y B-roll</li>
+<li><svg class="ck" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5 L6.5 12 L13 4.5"></path></svg>Subtítulos dinámicos y títulos</li>
+<li><svg class="ck" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5 L6.5 12 L13 4.5"></path></svg>Música y efectos de sonido</li>
+<li><svg class="ck" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5 L6.5 12 L13 4.5"></path></svg>Formato vertical listo para publicar</li>
+</ul>
+<a class="btn fill" data-wa="Me interesa la Edición de video unitario (USD 20)." target="_blank" rel="noopener">Quiero mi video →</a>
+</div>
+<div class="card feat">
+<span class="tag">Pack mensual</span>
+<span class="ptitle">12 videos por mes</span>
+<div style="display:flex;flex-direction:column;gap:4px"><span class="was">USD 240</span><div class="price"><span class="cur">USD</span><span class="amt">180</span><span class="u">/ mes</span></div></div>
+<span class="save">Ahorrás USD 60 · 25% off</span>
+<span class="per">USD 15 por video · 3 por semana</span>
+<ul class="inc">
+<li><svg class="ck" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5 L6.5 12 L13 4.5"></path></svg>Todo lo del video unitario</li>
+<li><svg class="ck" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5 L6.5 12 L13 4.5"></path></svg>La identidad de tu marca en cada video</li>
+<li><svg class="ck" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5 L6.5 12 L13 4.5"></path></svg>Contenido constante durante todo el mes</li>
+</ul>
+<a class="btn fill" data-wa="Me interesa el Pack de 12 videos por mes (USD 180)." target="_blank" rel="noopener">Quiero el pack →</a>
+</div>
+<div class="card feat">
+<div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px"><span class="tag">Pack mensual</span><span class="tag on">Mejor precio</span></div>
+<span class="ptitle">20 videos por mes</span>
+<div style="display:flex;flex-direction:column;gap:4px"><span class="was">USD 400</span><div class="price"><span class="cur">USD</span><span class="amt">280</span><span class="u">/ mes</span></div></div>
+<span class="save">Ahorrás USD 120 · 30% off</span>
+<span class="per">USD 14 por video · 5 por semana</span>
+<ul class="inc">
+<li><svg class="ck" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5 L6.5 12 L13 4.5"></path></svg>Todo lo del pack de 12</li>
+<li><svg class="ck" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5 L6.5 12 L13 4.5"></path></svg>Presencia casi diaria en redes</li>
+<li><svg class="ck" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5 L6.5 12 L13 4.5"></path></svg>El precio más bajo por video</li>
+</ul>
+<a class="btn fill" data-wa="Me interesa el Pack de 20 videos por mes (USD 280)." target="_blank" rel="noopener">Quiero el pack →</a>
+</div>
+</div>
+<div class="grid2">
+<div class="card feat" style="padding:clamp(28px,3vw,44px)">
+<span class="tag on">Embudo completo · 90 días</span>
+<span class="big">Captación, nutrición y conversión, <span class="acc">con guion.</span></span>
+<span class="lead" style="font-size:17px;line-height:1.55">Un plan personalizado con guionaje para armar el embudo completo. Trabajamos 90 días, el tiempo necesario para asegurarnos de que el funnel funcione y dé resultados reales.</span>
+<ul class="inc cols">
+<li><svg class="ck" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5 L6.5 12 L13 4.5"></path></svg>Guionaje de cada video</li>
+<li><svg class="ck" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5 L6.5 12 L13 4.5"></path></svg>Plan de captación</li>
+<li><svg class="ck" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5 L6.5 12 L13 4.5"></path></svg>Plan de nutrición</li>
+<li><svg class="ck" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5 L6.5 12 L13 4.5"></path></svg>Plan de conversión</li>
+<li><svg class="ck" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5 L6.5 12 L13 4.5"></path></svg>90 días para que dé resultados reales</li>
+</ul>
+<span style="font-size:14px;font-weight:600">100% personalizado · Precio a medida</span>
+<a class="btn fill" style="align-self:flex-start;padding:14px 22px" data-wa="Me interesa el Embudo completo de 90 días (captación, nutrición y conversión con guionaje)." target="_blank" rel="noopener">Armemos tu embudo →</a>
+</div>
+<div class="card" style="padding:clamp(28px,3vw,44px)">
+<span class="tag">Filmmaking</span>
+<span class="big">También <span class="acc">filmamos.</span></span>
+<span class="lead" style="font-size:17px;line-height:1.55">Si no tenés material o querés llevarlo a otro nivel, vamos a grabar el contenido de tu marca.</span>
+<div class="chips">
+<span><svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="4" cy="4" r="2.5"></circle><circle cx="14" cy="4" r="2.5"></circle><circle cx="4" cy="14" r="2.5"></circle><circle cx="14" cy="14" r="2.5"></circle><path d="M6 6 L12 12 M12 6 L6 12"></path></svg>Dron</span>
+<span><svg viewBox="0 0 18 18" aria-hidden="true"><rect x="6" y="1.5" width="6" height="9" rx="3"></rect><path d="M3.5 8.5 Q3.5 13 9 13 Q14.5 13 14.5 8.5 M9 13 V16.5 M6 16.5 H12"></path></svg>Equipo de audio</span>
+<span><svg viewBox="0 0 18 18" aria-hidden="true"><rect x="1.5" y="4" width="11" height="10" rx="2"></rect><path d="M12.5 8 L16.5 5.5 V12.5 L12.5 10"></path></svg>Calidad 4K</span>
+</div>
+<span style="font-size:14px;font-weight:600">Precio a consultar</span>
+<a class="btn ghost" style="align-self:flex-start" data-wa="Me interesa el servicio de Filmmaking." target="_blank" rel="noopener">Consultar →</a>
+</div>
+</div>
+</section>
+
+<!-- MANIFIESTO -->
+<section class="sect wrap mani">
+<p class="big1 rv"><span class="w">Si</span> <span class="w">no</span> <span class="w">se</span> <span class="w acc">siente,</span><br><span class="w">no</span> <span class="w">se</span> <span class="w">publica.</span></p>
+<p class="lead rv" style="margin-top:28px;max-width:860px;font-size:clamp(18px,1.6vw,22px);text-shadow:var(--tsh)">Trabajamos con una estructura profesional para lograr resultados: crecer en redes, vender y conseguir clientes. Pero queremos romper un poco con esa metodología. En cada video buscamos el lado humano, para conectar más allá de un simple video: con la persona que está detrás de todo.</p>
+</section>
+
+<!-- PROCESO -->
+<section id="proceso" class="sect wrap" style="padding-top:clamp(32px,4vw,56px);padding-bottom:clamp(32px,4vw,56px);display:flex;flex-direction:column;gap:24px">
+<h2 class="h2 rv">No es solo edición.<br>Es lo que está <span class="acc">detrás.</span></h2>
+<p class="lead rv" style="max-width:820px">Si buscás armar el embudo completo con guionaje, el enfoque es otro: trabajamos 90 días, el tiempo necesario para que el funnel funcione y dé resultados reales. Es 100% personalizado.</p>
+<div class="grid3 rv">
+<div class="card step" style="min-height:190px"><div style="display:flex;justify-content:space-between;align-items:center"><span class="num" style="color:var(--s1)">01</span><svg width="44" height="26" viewBox="0 0 38 22" aria-hidden="true"><path d="M2 11 Q19 -6 36 11 Q19 28 2 11 Z" style="stroke:var(--s1)"></path><circle cx="19" cy="11" r="5" style="fill:var(--s1)"></circle></svg></div><span class="ptitle" style="margin-top:auto">Captación</span><span style="font-size:16px;font-weight:300;line-height:1.5;color:var(--mut)">Contenido pensado para llegar a gente nueva y hacer que se frene a mirarte.</span></div>
+<div class="card step" style="min-height:190px"><div style="display:flex;justify-content:space-between;align-items:center"><span class="num" style="color:var(--s2)">02</span><svg width="44" height="26" viewBox="0 0 38 22" aria-hidden="true"><path d="M2 11 Q19 -6 36 11 Q19 28 2 11 Z" style="stroke:var(--s2)"></path><circle cx="19" cy="11" r="5" style="fill:var(--s2)"></circle></svg></div><span class="ptitle" style="margin-top:auto">Nutrición</span><span style="font-size:16px;font-weight:300;line-height:1.5;color:var(--mut)">Videos que muestran a la persona detrás de la marca y construyen confianza.</span></div>
+<div class="card step" style="min-height:190px"><div style="display:flex;justify-content:space-between;align-items:center"><span class="num" style="color:var(--s3)">03</span><svg width="44" height="26" viewBox="0 0 38 22" aria-hidden="true"><path d="M2 11 Q19 -6 36 11 Q19 28 2 11 Z" style="stroke:var(--s3)"></path><circle cx="19" cy="11" r="5" style="fill:var(--s3)"></circle></svg></div><span class="ptitle" style="margin-top:auto">Conversión</span><span style="font-size:16px;font-weight:300;line-height:1.5;color:var(--mut)">Contenido que convierte esa conexión en ventas o posibles clientes.</span></div>
+</div>
+</section>
+
+<!-- RESENAS -->
+<section id="resenas" class="sect wrap" style="padding-top:clamp(40px,5vw,72px);padding-bottom:clamp(32px,4vw,56px);display:flex;flex-direction:column;gap:24px">
+<div class="row-head rv">
+<h2 class="h2">Lo que piensan<br>nuestros <span class="acc">clientes.</span></h2>
+<p class="lead" style="max-width:480px">¿Trabajaste con nosotros? Contanos cómo te sentiste. Leemos cada reseña antes de publicarla.</p>
+</div>
+<div class="rev-wrap">
+<div class="rev-list" id="reviews"></div>
+<form class="card" id="revForm" novalidate style="gap:18px">
+<span class="tag on">Dejá tu reseña</span>
+<div id="revFields" style="display:flex;flex-direction:column;gap:18px">
+<label class="fld"><span>Tu nombre</span><input name="nombre" autocomplete="name" maxlength="60" required></label>
+<label class="fld"><span>Tu marca o Instagram <span style="font-weight:400;color:var(--mut)">(opcional)</span></span><input name="marca" maxlength="60"></label>
+<fieldset class="sf"><legend>¿Cómo te sentiste con nuestro trabajo?</legend><div class="stars" id="stars" role="radiogroup" aria-label="Puntuación"></div></fieldset>
+<label class="fld"><span>Tu reseña</span><textarea name="texto" rows="4" maxlength="600" required></textarea></label>
+<p class="err" id="revErr" hidden>Completá tu nombre, la puntuación y la reseña.</p>
+<button class="btn fill" type="submit" style="align-self:stretch;padding:16px 22px">Enviar reseña por WhatsApp →</button>
+<p class="note">Se abre WhatsApp con tu reseña lista para enviar.</p>
+</div>
+<div class="ok" id="revOk" hidden>
+<span class="big">¡Gracias por <span class="acc">contarnos!</span></span>
+<p class="lead" style="font-size:16px">Si no se abrió WhatsApp, tocá el botón de abajo. Vamos a publicar tu reseña en los próximos días.</p>
+<a class="btn fill" id="revLink" target="_blank" rel="noopener" style="padding:14px 22px">Abrir WhatsApp →</a>
+</div>
+</form>
+</div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" class="sect cta pe-none">
+<div class="cta-in">
+<div style="max-width:1360px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:30px">
+<h2 class="disp" style="margin:0;font-size:clamp(48px,8vw,120px);font-weight:500;line-height:1;letter-spacing:-.055em">Te estamos<br><span class="acc">mirando.</span></h2>
+<div style="flex:0 1 380px;display:flex;flex-direction:column;gap:22px">
+<p class="lead" style="font-size:19px">Cada marca es distinta y el precio depende del servicio que elijas. Contanos qué buscás y armamos una propuesta para vos.</p>
+<a class="btn fill" style="align-self:flex-start;padding:18px 28px;font-size:14px" data-wa="Quiero más información sobre sus servicios." target="_blank" rel="noopener">Escribinos por WhatsApp →</a>
+</div>
+</div>
+<div class="foot"><span>© 2026 DEQUSS</span><span>Brandsen · Buenos Aires</span></div>
+</div>
+</section>
+</main>
+
+<script>
+(function () {
+  var WA_NUM = '5492223505724';
+  var CH = [
+    { c: '#E5232D', l: '#C8102E' }, { c: '#FF7A1A', l: '#C84E00' }, { c: '#FFD21F', l: '#9A7400' },
+    { c: '#2FCB5B', l: '#167F38' }, { c: '#1FA8FF', l: '#0A68AE' }, { c: '#5B4BFF', l: '#4B3BFF' }, { c: '#B04BFF', l: '#8A2BD6' }
+  ];
+  var html = document.documentElement, $ = function (s) { return document.querySelector(s); };
+  var idx = 0, lastBlink = 0, seg = -1, sndOn = false, splitV = 50;
+
+  // WhatsApp
+  document.querySelectorAll('[data-wa]').forEach(function (a) {
+    a.href = 'https://wa.me/' + WA_NUM + '?text=' + encodeURIComponent('Hola Fran! Vengo de la web de DEQUSS. ' + a.getAttribute('data-wa'));
+  });
+
+  // Colores
+  function shade(hex, f) { var h = hex.slice(1); return '#' + [0, 2, 4].map(function (i) { return ('0' + Math.round(parseInt(h.substr(i, 2), 16) * f).toString(16)).slice(-2); }).join(''); }
+  function textOn(hex) {
+    var h = hex.slice(1), f = function (i) { var c = parseInt(h.substr(i, 2), 16) / 255; return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4); };
+    var L = 0.2126 * f(0) + 0.7152 * f(2) + 0.0722 * f(4);
+    return (L + 0.05) / 0.05 >= 1.05 / (L + 0.05) ? '#000000' : '#ffffff';
+  }
+  var dots = $('#dots');
+  CH.forEach(function (k) { var s = document.createElement('span'); s.style.background = k.c; dots.appendChild(s); });
+  function paint() {
+    var light = !html.classList.contains('dark'), ch = CH[idx % 7], acc = function (k) { return light ? k.l : k.c; };
+    var st = html.style;
+    st.setProperty('--c', ch.c); st.setProperty('--c2', shade(ch.c, 0.45)); st.setProperty('--ct', textOn(ch.c)); st.setProperty('--ca', acc(ch));
+    st.setProperty('--s1', acc(CH[0])); st.setProperty('--s2', acc(CH[3])); st.setProperty('--s3', acc(CH[6]));
+    Array.prototype.forEach.call(dots.children, function (d, j) { d.classList.toggle('on', j === idx % 7); });
+    var tgl = $('#tgl'); tgl.setAttribute('aria-label', light ? 'Cambiar a modo oscuro' : 'Cambiar a modo claro');
+    var mc = document.querySelector('meta[name="theme-color"]'); if (mc) mc.content = light ? '#ffffff' : '#000000';
+  }
+  paint();
+
+  // Tema
+  $('#tgl').addEventListener('click', function () {
+    var dark = html.classList.toggle('dark');
+    try { localStorage.setItem('dequss-theme', dark ? 'oscuro' : 'claro'); } catch (e) {}
+    paint();
+  });
+
+  // Menu movil
+  var menu = $('#mmenu'), burger = $('#burger');
+  burger.addEventListener('click', function () { menu.hidden = false; burger.setAttribute('aria-expanded', 'true'); });
+  menu.querySelectorAll('[data-close]').forEach(function (el) { el.addEventListener('click', function () { menu.hidden = true; burger.setAttribute('aria-expanded', 'false'); }); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !menu.hidden) { menu.hidden = true; burger.setAttribute('aria-expanded', 'false'); } });
+
+  // Ojo: forma, parpadeo
+  (function () {
+    var up = function (t) { return 60 - 54 * Math.pow(Math.max(0, 1 - t * t), 0.8); };
+    var lo = function (t) { return 60 + 34 * Math.pow(Math.max(0, 1 - t * t), 0.8); };
+    var X = function (t) { return 50 + 49 * t; }, pts = [], i, t;
+    for (i = 0; i <= 40; i++) { t = -1 + i / 20; pts.push(X(t).toFixed(2) + '% ' + up(t).toFixed(2) + '%'); }
+    for (i = 40; i >= 0; i--) { t = -1 + i / 20; pts.push(X(t).toFixed(2) + '% ' + lo(t).toFixed(2) + '%'); }
+    $('#almond').style.clipPath = 'polygon(' + pts.join(', ') + ')';
+  })();
+  var lids = $('#lids');
+  function blink() {
+    var now = Date.now(); if (now - lastBlink < 450) return; lastBlink = now;
+    lids.classList.remove('blinking'); void lids.offsetWidth; lids.classList.add('blinking');
+    setTimeout(function () { idx++; paint(); }, 190);
+  }
+  $('#eye').addEventListener('click', blink);
+  setInterval(function () { if (Date.now() - lastBlink > 5000) blink(); }, 1000);
+
+  // Mouse: pupila + cursor
+  var iris = $('#iris'), cursor = $('.cursor'), mx = 0, my = 0, mraf = 0;
+  document.addEventListener('pointermove', function (e) {
+    mx = e.clientX; my = e.clientY; if (mraf) return;
+    mraf = requestAnimationFrame(function () {
+      mraf = 0;
+      var b = iris.getBoundingClientRect(), dx = mx - (b.left + b.width / 2), dy = my - (b.top + b.height / 2), d = Math.hypot(dx, dy) || 1, k = Math.min(1, d / 500);
+      iris.style.transform = 'translate(' + (dx / d * k * 16).toFixed(1) + '%,' + (dy / d * k * 8).toFixed(1) + '%)';
+      cursor.style.transform = 'translate(' + mx + 'px,' + my + 'px)';
+    });
+  }, { passive: true });
+
+  // Scroll: acercamiento
+  var zoom = $('#zoom'), img = $('#img'), bar = $('#progress'), sraf = 0;
+  function onScroll() {
+    if (sraf) return;
+    sraf = requestAnimationFrame(function () {
+      sraf = 0;
+      var max = Math.max(1, html.scrollHeight - window.innerHeight), p = Math.min(1, Math.max(0, window.scrollY / max)), e = p * p * (3 - 2 * p);
+      var stageW = zoom.parentElement.clientWidth, imgW = zoom.offsetWidth || 500;
+      var S = Math.min(7, Math.max(1.6, (1.15 * stageW) / (0.469 * imgW)));
+      zoom.style.transform = 'scale(' + (1 + (S - 1) * e).toFixed(4) + ')';
+      var b = 1;
+      if (p < 0.06) b = 1; else if (p < 0.16) b = 1 - (p - 0.06) / 0.1 * 0.62; else if (p < 0.82) b = 0.38; else if (p < 0.95) b = 0.38 + (p - 0.82) / 0.13 * 0.62;
+      img.style.opacity = b.toFixed(3);
+      bar.style.width = (p * 100).toFixed(2) + '%';
+      var s = Math.min(6, Math.floor(p * 7)); if (seg !== -1 && s !== seg) blink(); seg = s;
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  onScroll();
+
+  // Aparicion al bajar + contador
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (ents) {
+      ents.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { threshold: 0.01, rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('.rv').forEach(function (el) { io.observe(el); });
+    var cnt = $('#count'), to = Number(cnt.getAttribute('data-to')) || 0;
+    var cio = new IntersectionObserver(function (ents) {
+      if (!ents.some(function (en) { return en.isIntersecting; })) return;
+      cio.disconnect();
+      var t0 = performance.now();
+      (function step(t) { var k = Math.min(1, (t - t0) / 1400); cnt.textContent = String(Math.round(to * (1 - Math.pow(1 - k, 3)))); if (k < 1) requestAnimationFrame(step); })(t0);
+    }, { threshold: 0.5 });
+    cio.observe(cnt);
+  }
+
+  // Reseñas publicadas: agregalas acá cuando te lleguen por WhatsApp.
+  // Ejemplo: { nombre: 'Natalia López', marca: '@natalialopez_headcoach', estrellas: 5, texto: 'Lo que escribió.' }
+  var REVIEWS = [];
+
+  var STAR = '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5 L12.6 7 L18.5 7.6 L14 11.6 L15.3 17.5 L10 14.5 L4.7 17.5 L6 11.6 L1.5 7.6 L7.4 7 Z"></path></svg>';
+  function esc(s) { return String(s).replace(/[&<>"']/g, function (ch) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]; }); }
+  var list = $('#reviews');
+  if (!REVIEWS.length) {
+    list.innerHTML = '<div class="card rev-card" style="justify-content:center;min-height:220px"><span class="tag">Reseñas</span><span class="big">Acá van a aparecer las <span class="acc">reseñas.</span></span><p class="q">Estamos juntando las opiniones de las marcas con las que trabajamos. ¿Fuiste una? Dejá la tuya.</p></div>';
+  } else {
+    list.innerHTML = REVIEWS.map(function (r) {
+      var n = Math.max(1, Math.min(5, Number(r.estrellas) || 5)), stars = '';
+      for (var i = 1; i <= 5; i++) stars += STAR.replace('<svg', '<svg' + (i > n ? ' class="off"' : ''));
+      var ini = String(r.nombre || '?').trim().split(/\s+/).map(function (w) { return w[0]; }).slice(0, 2).join('').toUpperCase();
+      return '<figure class="card rev-card" style="margin:0"><div class="starrow" role="img" aria-label="' + n + ' de 5 estrellas">' + stars + '</div>' +
+        '<blockquote class="q" style="margin:0">“' + esc(r.texto) + '”</blockquote>' +
+        '<figcaption class="who"><span class="av">' + esc(ini) + '</span><span><span class="nm">' + esc(r.nombre) + '</span><br><span class="br">' + esc(r.marca || '') + '</span></span></figcaption></figure>';
+    }).join('');
+  }
+  var rating = 0, starsBox = $('#stars');
+  for (var si = 1; si <= 5; si++) {
+    var sb = document.createElement('button');
+    sb.type = 'button'; sb.setAttribute('role', 'radio'); sb.setAttribute('aria-checked', 'false');
+    sb.setAttribute('aria-label', si + (si === 1 ? ' estrella' : ' estrellas')); sb.dataset.v = si; sb.innerHTML = STAR;
+    starsBox.appendChild(sb);
+  }
+  starsBox.addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    rating = Number(b.dataset.v);
+    Array.prototype.forEach.call(starsBox.children, function (x) { var on = Number(x.dataset.v) <= rating; x.classList.toggle('on', on); x.setAttribute('aria-checked', String(Number(x.dataset.v) === rating)); });
+  });
+  $('#revForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var f = e.target, nombre = f.nombre.value.trim(), marca = f.marca.value.trim(), texto = f.texto.value.trim();
+    if (!nombre || !texto || !rating) { $('#revErr').hidden = false; return; }
+    $('#revErr').hidden = true;
+    var msg = 'Hola Fran! Quiero dejar una reseña para DEQUSS.\n\nNombre: ' + nombre + (marca ? '\nMarca: ' + marca : '') + '\nPuntuación: ' + '★★★★★'.slice(0, rating) + '☆☆☆☆☆'.slice(0, 5 - rating) + ' (' + rating + '/5)\n\nReseña: ' + texto;
+    var url = 'https://wa.me/' + WA_NUM + '?text=' + encodeURIComponent(msg);
+    $('#revLink').href = url;
+    $('#revFields').hidden = true; $('#revOk').hidden = false;
+    window.open(url, '_blank', 'noopener');
+  });
+
+  // Comparador
+  var vc = $('#vCrudo'), ve = $('#vEdit'), layer = $('#layer'), handle = $('#handle'), paused = false;
+  function playAll() { [vc, ve].forEach(function (v) { var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); }); }
+  function applyAudio() { vc.muted = !(sndOn && splitV >= 50); ve.muted = !(sndOn && splitV < 50); }
+  [vc, ve].forEach(function (v) { v.muted = true; });
+  playAll();
+  $('#split').addEventListener('input', function (e) {
+    splitV = Number(e.target.value);
+    layer.style.clipPath = 'inset(0 0 0 ' + splitV + '%)';
+    handle.style.left = splitV + '%';
+    applyAudio();
+  });
+  ve.addEventListener('timeupdate', function () {
+    if (!ve.paused && Math.abs(vc.currentTime - ve.currentTime) > 0.35 && ve.currentTime < (vc.duration || 0)) vc.currentTime = ve.currentTime;
+  });
+  $('#playBtn').addEventListener('click', function () {
+    paused = !ve.paused;
+    if (paused) { vc.pause(); ve.pause(); } else playAll();
+    this.querySelector('.i-pause').hidden = paused; this.querySelector('.i-play').hidden = !paused;
+    this.setAttribute('aria-label', paused ? 'Reproducir videos' : 'Pausar videos');
+  });
+  $('#sndBtn').addEventListener('click', function () {
+    sndOn = !sndOn; applyAudio(); if (!paused) playAll();
+    this.querySelector('.i-on').hidden = !sndOn; this.querySelector('.i-off').hidden = sndOn;
+    $('#sndLabel').textContent = sndOn ? 'Sonido activado' : 'Activar sonido';
+  });
+})();
+</script>
+</body>
+</html>
