@@ -202,6 +202,11 @@ fieldset.sf legend{font-size:14px;font-weight:600;padding:0;margin-bottom:8px}
 html.dark .err{color:#ff6b6b}
 .note{margin:0;font-size:13px;color:var(--mut)}
 .ok{display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.rev-card{position:relative}
+.rev-del{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--bg);color:var(--fg);cursor:pointer;font-size:18px;line-height:1}
+.rev-date{font-size:13px;color:var(--mut)}
+.btn[disabled]{opacity:.6;pointer-events:none}
 
 /* contacto */
 .cta{display:flex;flex-direction:column;justify-content:flex-end}
@@ -443,25 +448,25 @@ html.dark .err{color:#ff6b6b}
 <section id="resenas" class="sect wrap" style="padding-top:clamp(40px,5vw,72px);padding-bottom:clamp(32px,4vw,56px);display:flex;flex-direction:column;gap:24px">
 <div class="row-head rv">
 <h2 class="h2">Lo que piensan<br>nuestros <span class="acc">clientes.</span></h2>
-<p class="lead" style="max-width:480px">¿Trabajaste con nosotros? Contanos cómo te sentiste. Leemos cada reseña antes de publicarla.</p>
+<p class="lead" style="max-width:480px">¿Trabajaste con nosotros? Contanos cómo te sentiste y tu reseña aparece acá al instante.</p>
 </div>
 <div class="rev-wrap">
 <div class="rev-list" id="reviews"></div>
 <form class="card" id="revForm" novalidate style="gap:18px">
 <span class="tag on">Dejá tu reseña</span>
 <div id="revFields" style="display:flex;flex-direction:column;gap:18px">
+<input class="hp" type="text" name="web" tabindex="-1" autocomplete="off" aria-hidden="true">
 <label class="fld"><span>Tu nombre</span><input name="nombre" autocomplete="name" maxlength="60" required></label>
 <label class="fld"><span>Tu marca o Instagram <span style="font-weight:400;color:var(--mut)">(opcional)</span></span><input name="marca" maxlength="60"></label>
 <fieldset class="sf"><legend>¿Cómo te sentiste con nuestro trabajo?</legend><div class="stars" id="stars" role="radiogroup" aria-label="Puntuación"></div></fieldset>
 <label class="fld"><span>Tu reseña</span><textarea name="texto" rows="4" maxlength="600" required></textarea></label>
 <p class="err" id="revErr" hidden>Completá tu nombre, la puntuación y la reseña.</p>
-<button class="btn fill" type="submit" style="align-self:stretch;padding:16px 22px">Enviar reseña por WhatsApp →</button>
-<p class="note">Se abre WhatsApp con tu reseña lista para enviar.</p>
+<button class="btn fill" id="revSend" type="submit" style="align-self:stretch;padding:16px 22px">Publicar mi reseña →</button>
+<p class="note">Tu reseña se publica al instante en esta página.</p>
 </div>
 <div class="ok" id="revOk" hidden>
 <span class="big">¡Gracias por <span class="acc">contarnos!</span></span>
-<p class="lead" style="font-size:16px">Si no se abrió WhatsApp, tocá el botón de abajo. Vamos a publicar tu reseña en los próximos días.</p>
-<a class="btn fill" id="revLink" target="_blank" rel="noopener" style="padding:14px 22px">Abrir WhatsApp →</a>
+<p class="lead" style="font-size:16px">Tu reseña ya está publicada. Gracias por confiar en nosotros.</p>
 </div>
 </form>
 </div>
@@ -597,25 +602,37 @@ html.dark .err{color:#ff6b6b}
     cio.observe(cnt);
   }
 
-  // Reseñas publicadas: agregalas acá cuando te lleguen por WhatsApp.
-  // Ejemplo: { nombre: 'Natalia López', marca: '@natalialopez_headcoach', estrellas: 5, texto: 'Lo que escribió.' }
-  var REVIEWS = [];
-
+  // Reseñas: se guardan y leen desde /api/reviews
   var STAR = '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5 L12.6 7 L18.5 7.6 L14 11.6 L15.3 17.5 L10 14.5 L4.7 17.5 L6 11.6 L1.5 7.6 L7.4 7 Z"></path></svg>';
-  function esc(s) { return String(s).replace(/[&<>"']/g, function (ch) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]; }); }
-  var list = $('#reviews');
-  if (!REVIEWS.length) {
-    list.innerHTML = '<div class="card rev-card" style="justify-content:center;min-height:220px"><span class="tag">Reseñas</span><span class="big">Acá van a aparecer las <span class="acc">reseñas.</span></span><p class="q">Estamos juntando las opiniones de las marcas con las que trabajamos. ¿Fuiste una? Dejá la tuya.</p></div>';
-  } else {
-    list.innerHTML = REVIEWS.map(function (r) {
-      var n = Math.max(1, Math.min(5, Number(r.estrellas) || 5)), stars = '';
-      for (var i = 1; i <= 5; i++) stars += STAR.replace('<svg', '<svg' + (i > n ? ' class="off"' : ''));
-      var ini = String(r.nombre || '?').trim().split(/\s+/).map(function (w) { return w[0]; }).slice(0, 2).join('').toUpperCase();
-      return '<figure class="card rev-card" style="margin:0"><div class="starrow" role="img" aria-label="' + n + ' de 5 estrellas">' + stars + '</div>' +
-        '<blockquote class="q" style="margin:0">“' + esc(r.texto) + '”</blockquote>' +
-        '<figcaption class="who"><span class="av">' + esc(ini) + '</span><span><span class="nm">' + esc(r.nombre) + '</span><br><span class="br">' + esc(r.marca || '') + '</span></span></figcaption></figure>';
-    }).join('');
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (ch) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]; }); }
+  var list = $('#reviews'), reviews = [], ADMIN = null;
+  try {
+    var qa = new URLSearchParams(location.search).get('admin');
+    if (qa) { sessionStorage.setItem('dequss-admin', qa); history.replaceState(null, '', location.pathname + location.hash); }
+    ADMIN = sessionStorage.getItem('dequss-admin');
+  } catch (e) {}
+  var EMPTY = '<div class="card rev-card" style="justify-content:center;min-height:220px"><span class="tag">Reseñas</span><span class="big">Acá van a aparecer las <span class="acc">reseñas.</span></span><p class="q">Todavía no hay reseñas. ¿Trabajaste con nosotros? Sé el primero en dejar la tuya.</p></div>';
+  function fecha(iso) { try { return new Date(iso).toLocaleDateString('es-AR', { day: 'numeric', month: 'long', year: 'numeric' }); } catch (e) { return ''; } }
+  function card(r) {
+    var n = Math.max(1, Math.min(5, Number(r.estrellas) || 5)), stars = '';
+    for (var i = 1; i <= 5; i++) stars += STAR.replace('<svg', '<svg' + (i > n ? ' class="off"' : ''));
+    var ini = String(r.nombre || '?').trim().split(/\s+/).map(function (w) { return w[0]; }).slice(0, 2).join('').toUpperCase();
+    return '<figure class="card rev-card" style="margin:0">' +
+      (ADMIN ? '<button class="rev-del" type="button" data-del="' + esc(r.id) + '" aria-label="Borrar reseña de ' + esc(r.nombre) + '">×</button>' : '') +
+      '<div class="starrow" role="img" aria-label="' + n + ' de 5 estrellas">' + stars + '</div>' +
+      '<blockquote class="q" style="margin:0">“' + esc(r.texto) + '”</blockquote>' +
+      '<figcaption class="who"><span class="av">' + esc(ini) + '</span><span><span class="nm">' + esc(r.nombre) + '</span><br><span class="br">' + esc(r.marca || '') + (r.fecha ? (r.marca ? ' · ' : '') + '<span class="rev-date">' + esc(fecha(r.fecha)) + '</span>' : '') + '</span></span></figcaption></figure>';
   }
+  function render() { list.innerHTML = reviews.length ? reviews.slice(0, 12).map(card).join('') : EMPTY; }
+  render();
+  fetch('/api/reviews').then(function (r) { return r.ok ? r.json() : { reviews: [] }; }).then(function (d) { reviews = d.reviews || []; render(); }).catch(function () {});
+  list.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-del]'); if (!b || !ADMIN) return;
+    if (!confirm('¿Borrar esta reseña de la página?')) return;
+    var id = b.getAttribute('data-del');
+    fetch('/api/reviews?id=' + encodeURIComponent(id), { method: 'DELETE', headers: { 'x-admin-key': ADMIN } })
+      .then(function (r) { if (r.ok) { reviews = reviews.filter(function (x) { return x.id !== id; }); render(); } else alert('No se pudo borrar. Revisá la clave de administrador.'); });
+  });
   var rating = 0, starsBox = $('#stars');
   for (var si = 1; si <= 5; si++) {
     var sb = document.createElement('button');
@@ -626,18 +643,24 @@ html.dark .err{color:#ff6b6b}
   starsBox.addEventListener('click', function (e) {
     var b = e.target.closest('button'); if (!b) return;
     rating = Number(b.dataset.v);
-    Array.prototype.forEach.call(starsBox.children, function (x) { var on = Number(x.dataset.v) <= rating; x.classList.toggle('on', on); x.setAttribute('aria-checked', String(Number(x.dataset.v) === rating)); });
+    Array.prototype.forEach.call(starsBox.children, function (x) { x.classList.toggle('on', Number(x.dataset.v) <= rating); x.setAttribute('aria-checked', String(Number(x.dataset.v) === rating)); });
   });
+  var errEl = $('#revErr'), sendBtn = $('#revSend');
+  function showErr(m) { errEl.textContent = m; errEl.hidden = false; }
   $('#revForm').addEventListener('submit', function (e) {
     e.preventDefault();
     var f = e.target, nombre = f.nombre.value.trim(), marca = f.marca.value.trim(), texto = f.texto.value.trim();
-    if (!nombre || !texto || !rating) { $('#revErr').hidden = false; return; }
-    $('#revErr').hidden = true;
-    var msg = 'Hola Fran! Quiero dejar una reseña para DEQUSS.\n\nNombre: ' + nombre + (marca ? '\nMarca: ' + marca : '') + '\nPuntuación: ' + '★★★★★'.slice(0, rating) + '☆☆☆☆☆'.slice(0, 5 - rating) + ' (' + rating + '/5)\n\nReseña: ' + texto;
-    var url = 'https://wa.me/' + WA_NUM + '?text=' + encodeURIComponent(msg);
-    $('#revLink').href = url;
-    $('#revFields').hidden = true; $('#revOk').hidden = false;
-    window.open(url, '_blank', 'noopener');
+    if (!nombre || !texto || !rating) { showErr('Completá tu nombre, la puntuación y la reseña.'); return; }
+    errEl.hidden = true; sendBtn.disabled = true; sendBtn.textContent = 'Publicando…';
+    fetch('/api/reviews', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ nombre: nombre, marca: marca, estrellas: rating, texto: texto, web: f.web.value }) })
+      .then(function (r) { return r.json().catch(function () { return {}; }).then(function (d) { return { ok: r.ok, d: d }; }); })
+      .then(function (res) {
+        if (!res.ok) throw new Error(res.d.error || 'No pudimos publicar tu reseña. Probá de nuevo.');
+        if (res.d.review) { reviews.unshift(res.d.review); render(); }
+        $('#revFields').hidden = true; $('#revOk').hidden = false;
+      })
+      .catch(function (err) { showErr(err.message || 'No pudimos publicar tu reseña. Probá de nuevo.'); })
+      .then(function () { sendBtn.disabled = false; sendBtn.textContent = 'Publicar mi reseña →'; });
   });
 
   // Comparador
