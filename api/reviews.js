@@ -9,10 +9,18 @@ const KEY = 'dequss:reviews';
 const MAX_STORED = 300;
 const MAX_PER_HOUR = 3;
 
+// Busca las credenciales de Upstash sin importar el prefijo que haya puesto Vercel
+// (KV_REST_API_URL, STORAGE_KV_REST_API_URL, UPSTASH_REDIS_REST_URL, etc.).
 function redisConfig() {
-  const url = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
-  const token = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
-  return url && token ? { url: url.replace(/\/$/, ''), token } : null;
+  const env = process.env;
+  const names = Object.keys(env);
+  const pick = (re, exclude) => {
+    const n = names.find((k) => re.test(k) && !(exclude && exclude.test(k)) && env[k]);
+    return n ? env[n] : null;
+  };
+  const url = pick(/(REST_API_URL|REDIS_REST_URL)$/);
+  const token = pick(/(REST_API_TOKEN|REDIS_REST_TOKEN)$/, /READ_ONLY/);
+  return url && token && /^https:\/\//.test(url) ? { url: url.replace(/\/$/, ''), token } : null;
 }
 
 async function redis(cfg, command) {
