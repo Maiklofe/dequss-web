@@ -8,6 +8,8 @@
 const KEY = 'dequss:reviews';
 const MAX_STORED = 300;
 const MAX_PER_HOUR = 3;
+// Huella (SHA-256) de la clave de administrador. La clave en sí no está en el código.
+const ADMIN_KEY_SHA256 = '5aa2a39c002abaa5bb22a9e05cf1465026c4b25bc7371212cf78d3efa19ea3c2';
 
 // Busca las credenciales de Upstash sin importar el prefijo que haya puesto Vercel
 // (KV_REST_API_URL, STORAGE_KV_REST_API_URL, UPSTASH_REDIS_REST_URL, etc.).
@@ -91,8 +93,11 @@ module.exports = async function handler(req, res) {
     }
 
     if (req.method === 'DELETE') {
-      const admin = process.env.ADMIN_KEY;
-      if (!admin || req.headers['x-admin-key'] !== admin) return res.status(401).json({ error: 'No autorizado.' });
+      const given = String(req.headers['x-admin-key'] || '');
+      const envKey = process.env.ADMIN_KEY;
+      const givenHash = require('crypto').createHash('sha256').update(given).digest('hex');
+      const okKey = given && ((envKey && given === envKey) || givenHash === ADMIN_KEY_SHA256);
+      if (!okKey) return res.status(401).json({ error: 'No autorizado.' });
       const id = String((req.query && req.query.id) || '');
       const raw = await redis(cfg, ['LRANGE', KEY, '0', '-1']);
       const target = (raw || []).find((s) => { try { return JSON.parse(s).id === id; } catch (e) { return false; } });
