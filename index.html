@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" class="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,16 +8,16 @@
 <meta property="og:title" content="DEQUSS · decime que se siente">
 <meta property="og:description" content="Contenido con estructura que conecta con la persona que está detrás.">
 <meta property="og:image" content="/assets/manos-ojo.jpg">
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="#000000">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;700&family=Inter+Tight:wght@300;400;600&display=swap">
-<script>try{if(localStorage.getItem('dequss-theme')==='oscuro')document.documentElement.classList.add('dark')}catch(e){}</script>
+<script>try{if(localStorage.getItem('dequss-theme')==='claro')document.documentElement.classList.remove('dark')}catch(e){}</script>
 <style>
-:root{--bg:#ffffff;--fg:#111111;--fg2:#2b2b2b;--mut:#5c5c5c;--line:#e3e3e3;--card:#f7f7f7;--panel:rgba(255,255,255,0.75);--scrim:rgba(255,255,255,0.9);--tsh:0 2px 30px #ffffff;--imgf:invert(1);--blend:multiply;--lid:#3a3a3a;--hatch:#eeeeee;--lidedge:#ffffff;--track:rgba(0,0,0,0.1);
+:root{--bg:#ffffff;--fg:#111111;--fg2:#2b2b2b;--mut:#5c5c5c;--line:#e3e3e3;--card:#f7f7f7;--panel:rgba(255,255,255,0.75);--scrim:rgba(255,255,255,0.9);--tsh:0 1px 2px rgba(255,255,255,.95),0 0 10px rgba(255,255,255,.9),0 0 26px rgba(255,255,255,.85);--imgf:invert(1);--blend:multiply;--lid:#3a3a3a;--hatch:#eeeeee;--lidedge:#ffffff;--track:rgba(0,0,0,0.1);
 --c:#E5232D;--c2:#671016;--ct:#000000;--ca:#C8102E;--s1:#C8102E;--s2:#167F38;--s3:#8A2BD6}
-html.dark{--bg:#000000;--fg:#ffffff;--fg2:#e5e5e5;--mut:#a3a3a3;--line:#2e2e2e;--card:#0b0b0b;--panel:rgba(0,0,0,0.6);--scrim:rgba(0,0,0,0.88);--tsh:0 2px 30px #000000;--imgf:none;--blend:normal;--lid:#cfcfcf;--hatch:#111111;--lidedge:#0a0a0a;--track:rgba(255,255,255,0.12)}
+html.dark{--bg:#000000;--fg:#ffffff;--fg2:#e5e5e5;--mut:#a3a3a3;--line:#2e2e2e;--card:#0b0b0b;--panel:rgba(0,0,0,0.6);--scrim:rgba(0,0,0,0.88);--tsh:0 1px 2px rgba(0,0,0,.95),0 0 10px rgba(0,0,0,.9),0 0 26px rgba(0,0,0,.85);--imgf:none;--blend:normal;--lid:#cfcfcf;--hatch:#111111;--lidedge:#0a0a0a;--track:rgba(255,255,255,0.12)}
 *{box-sizing:border-box}
 [hidden]{display:none !important}
 html{scroll-behavior:smooth}
@@ -292,7 +292,7 @@ html.dark .err{color:#ff6b6b}
 <h1>Te miran.<br>Hacé que <span class="rollbox"><span class="roll acc"><span>sientan.</span><span>conecten.</span><span>vuelvan.</span><span>compren.</span><span>sientan.</span></span></span></h1>
 </div>
 <div style="flex:0 1 340px;display:flex;flex-direction:column;gap:22px">
-<p class="lead" style="text-shadow:var(--tsh)">Encontramos el lado humano de lo profesional: contenido con estructura que conecta con la persona que está detrás. Bajá despacio, el ojo se te va a acercar.</p>
+<p class="lead" style="text-shadow:var(--tsh);font-weight:400;color:var(--fg)">Encontramos el lado humano de lo profesional: contenido con estructura que conecta con la persona que está detrás. Bajá despacio, el ojo se te va a acercar.</p>
 <div><a class="btn fill" href="#contacto">Quiero que me miren →</a></div>
 <p class="lbl" style="display:flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.1em;color:var(--mut)"><span class="ping"><i></i><b></b></span>Tocá el ojo</p>
 </div>
